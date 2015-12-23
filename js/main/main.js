@@ -61,7 +61,7 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 		$scope.score += 5*$scope.wordsCompleted;
 
 		// give more time
-		$scope.gameClock += 10;
+		$scope.gameClock += 15;
 
 		$scope.highScore = Math.max($scope.score, $scope.highScore);
 		localStorage.setItem("highScore", $scope.highScore);
@@ -103,7 +103,7 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 	};
 
 	// gameclock
-	$scope.gameClock = 20;
+	$scope.gameClock = 25;
 
 	// this is the countdown for the game time
 	function startTimer() {
@@ -112,7 +112,7 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 
 	        // reset timer
 	        if ($scope.gameClock == 0) {
-	        	$scope.gameClock = 20;
+	        	$scope.gameClock = 25;
 	        	$scope.score = 0;
 	        	$scope.wordsCompleted = 0;
 	        }

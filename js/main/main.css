@@ -38,6 +38,7 @@ html {
 }
 
 .loss, .win{
+	margin-top: 10px;
 	opacity: 0;
 }
 
