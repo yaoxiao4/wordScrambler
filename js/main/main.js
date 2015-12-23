@@ -19,7 +19,7 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 	$scope.score = 0;
 	$scope.wordsCompleted = 0;
 	// find high score in cache
-	$scope.highScore = localStorage.getItem("highScore");;
+	$scope.highScore = localStorage.getItem("highScore") || 0;
 
 	/**
 	 * Gets the word from the api and constructs approperiate variables (hardcoded for now)
@@ -27,7 +27,7 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 	$scope.getNewWord = function() {
 		$http({
 		  method: 'GET',
-		  url: '//api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=50000&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=5&api_key=' + API_KEY
+		  url: '//api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=100000&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=5&api_key=' + API_KEY
 		}).then(function successCallback(response) {
 		    $scope.word = response.data.word.toLowerCase().split('');
 			$scope.scrambledWord = response.data.word.toLowerCase().shuffle().split('');
