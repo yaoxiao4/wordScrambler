@@ -30,8 +30,10 @@
 		</div>
 
 		<div class="main-score">
-			Your Score: <span class="score">{{score}}</span>
-			<div class="multiplier">{{wordsCompleted + 1}}x multiplier<div>
+			Your Score: <span class="score">{{score}}</span> <br>
+			High Score: <span class="score">{{highScore}}</span>
+			<div class="multiplier">{{wordsCompleted + 1}}x multiplier</div>
+			<div class="timer">Score resets in <span ng-class="{'red': gameClock < 10}">{{gameClock}}</span> seconds</div>
 		</div>
 	</body>
 </html>

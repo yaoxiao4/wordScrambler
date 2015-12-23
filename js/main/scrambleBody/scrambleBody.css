@@ -1,5 +1,5 @@
 .scramble-body {
-	width: 550px;
+	width: 650px;
     margin: 0 auto;
 }
 
@@ -31,23 +31,23 @@
 }
 
 .scramble-body .letter-wrapper {
-	transition: height 0.5s linear;
+	transition: height 0.3s linear;
 	height: 120px;
 	overflow: hidden;
-	width: 550px;
+	width: 650px;
 }
 
 .scramble-body .letter-wrapper.hidden {
-	transition: height 0.5s linear;
+	transition: height 0.3s linear;
 	height: 0px;
 	overflow: hidden;
-	width: 550px;
+	width: 650px;
 }
 
 .scramble-body .single-letter .typed {
 	opacity: 0.3;
     animation-name: fade-out;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
 }
 
 .scramble-body .single-letter-answer {

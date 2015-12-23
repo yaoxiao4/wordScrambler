@@ -51,7 +51,7 @@ scrambleApp.directive('scrambleBody', function() {
 		// watch the currently typed
 		$scope.$watch('currentlyTyped', function(newValue, oldValue) {
 			// when it hits 4, we want to check if its correct 
-			if ($scope.currentlyTyped.length == 4) {
+			if ($scope.wordTypedTracker && $scope.currentlyTyped.length == $scope.wordTypedTracker.length) {
 				$scope.checkWinCondition({currentlyTyped: $scope.currentlyTyped, callback: function(didWin) {
 					$scope.currentlyTyped = [];
 					// Reset the typed tracker only if its a loss

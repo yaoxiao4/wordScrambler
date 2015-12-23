@@ -1,5 +1,5 @@
 .main-body {
-	margin-top: 150;
+	margin-top: 200;
 }
 
 html {
@@ -18,12 +18,15 @@ html {
 	margin: 0 auto;
 }
 
-.main-score span {
+.main-score .score {
 	color: red;
 }
 
 .main-score .multiplier {
 	color: purple;
+}
+.main-score .timer {
+	font-size: 20px;
 }
 
 .indicator {
@@ -39,8 +42,9 @@ html {
 }
 
 .win.active, .loss.active {
+	opacity: 1;
     animation-name: fade-in;
-    animation-duration: 2.0s;
+    animation-duration: 1.0s;
 }
 
 .loss {
@@ -49,6 +53,10 @@ html {
 
 .win {
 	color: green;
+}
+
+.red {
+	color: red;
 }
 
 @keyframes fade-in {

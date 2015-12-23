@@ -16,6 +16,8 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 	$scope.word = [];
 	$scope.score = 0;
 	$scope.wordsCompleted = 0;
+	// find high score in cache
+	$scope.highScore = localStorage.getItem("highScore");;
 
 	/**
 	 * Gets the word from the api and constructs approperiate variables (hardcoded for now)
@@ -23,13 +25,16 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 	$scope.getNewWord = function() {
 		$http({
 		  method: 'GET',
-		  url: 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=4&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'
+		  url: 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=50000&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'
 		}).then(function successCallback(response) {
 		    $scope.word = response.data.word.toLowerCase().split('');
 			$scope.scrambledWord = response.data.word.toLowerCase().shuffle().split('');
 			$scope.wordCopy = $scope.word.slice();
 
 			mapWordTracker();
+
+			// show if hidden
+			document.querySelector('.letter-wrapper').classList.remove('hidden');
 		  }, function errorCallback(response) {
 		  	$scope.error = response;
 		  });
@@ -54,6 +59,12 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 	$scope.addScore = function() {
 		$scope.wordsCompleted ++;
 		$scope.score += 5*$scope.wordsCompleted;
+
+		// give more time
+		$scope.gameClock += 10;
+
+		$scope.highScore = Math.max($scope.score, $scope.highScore);
+		localStorage.setItem("highScore", $scope.highScore);
 	};
 
 	/**
@@ -68,8 +79,8 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 
 			// Give the user some time to see the message
 			$timeout(function() {
+				$scope.scrambledWord = [];
 				document.querySelector('.win').classList.remove('active');
-				document.querySelector('.letter-wrapper').classList.remove('hidden');
 				// Add score and get a new word for the user
 				$scope.getNewWord();
 				$scope.addScore();
@@ -84,11 +95,34 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 				document.querySelector('.loss').classList.remove('active');
 				// Create a new word copy
 				$scope.wordCopy = $scope.scrambledWord.slice();
+				$scope.gameClock = $scope.gameClock - 5;
+				$scope.$digest();
 				callback(false);
 			}, 2000);
 		}
 	};
 
+	// gameclock
+	$scope.gameClock = 20;
+
+	// this is the countdown for the game time
+	function startTimer() {
+	    setInterval(function () {
+	        $scope.gameClock --;
+
+	        // reset timer
+	        if ($scope.gameClock == 0) {
+	        	$scope.gameClock = 20;
+	        	$scope.score = 0;
+	        	$scope.wordsCompleted = 0;
+	        }
+
+	        $scope.$digest();
+	    }, 1000);
+	}
+
 	// Initialize
 	$scope.getNewWord();
+	startTimer();
 }])
+
