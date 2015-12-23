@@ -12,6 +12,8 @@ String.prototype.shuffle = function () {
     return a.join("");
 }
 
+var API_KEY = "06a9e98bf7dd05aeda00901c0b30257f232606837362687fe";
+
 scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
 	$scope.word = [];
 	$scope.score = 0;
@@ -25,7 +27,7 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 	$scope.getNewWord = function() {
 		$http({
 		  method: 'GET',
-		  url: 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=50000&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'
+		  url: '//api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=50000&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=5&api_key=' + API_KEY
 		}).then(function successCallback(response) {
 		    $scope.word = response.data.word.toLowerCase().split('');
 			$scope.scrambledWord = response.data.word.toLowerCase().shuffle().split('');
