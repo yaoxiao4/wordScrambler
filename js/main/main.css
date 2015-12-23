@@ -1,5 +1,5 @@
 .main-body {
-	margin-top: 200;
+	margin-top: 250;
 }
 
 html {
@@ -10,6 +10,7 @@ html {
 }
 
 .main-score {
+	font-weight: 600;
 	font-family: verdana;
 	left: 20px;
 	top: 10px;
@@ -30,15 +31,17 @@ html {
 }
 
 .indicator {
+	position: relative;
 	width: 320px;
 	margin: 0 auto;
 	font-size: 30px;
 	font-weight: 900;
-	margin-top: 20px;
+	margin-top: 5px;
 }
 
-.loss, .win{
-	margin-top: 10px;
+.loss, .win {
+	position:absolute;
+	top: 15px;
 	opacity: 0;
 }
 
@@ -48,16 +51,12 @@ html {
     animation-duration: 1.0s;
 }
 
-.loss {
+.loss, .red{
 	color: red;
 }
 
 .win {
 	color: green;
-}
-
-.red {
-	color: red;
 }
 
 @keyframes fade-in {
