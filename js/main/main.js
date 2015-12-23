@@ -36,7 +36,9 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 			mapWordTracker();
 
 			// show if hidden
-			document.querySelector('.letter-wrapper').classList.remove('hidden');
+			if (document.querySelector('.letter-wrapper')) {
+				document.querySelector('.letter-wrapper').classList.remove('hidden');
+			}
 		  }, function errorCallback(response) {
 		  	$scope.error = response;
 		  });
