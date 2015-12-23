@@ -1,0 +1,1 @@
+var scrambleApp = angular.module('scramble', []);

@@ -1,0 +1,57 @@
+.main-body {
+	margin-top: 150;
+}
+
+html {
+	background-image: url('/assets/index.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.main-score {
+	font-family: verdana;
+	left: 20px;
+	top: 10px;
+	position: absolute;
+	font-size: 50px;
+	margin: 0 auto;
+}
+
+.main-score span {
+	color: red;
+}
+
+.main-score .multiplier {
+	color: purple;
+}
+
+.indicator {
+	width: 320px;
+	margin: 0 auto;
+	font-size: 30px;
+	font-weight: 900;
+	margin-top: 20px;
+}
+
+.loss, .win{
+	opacity: 0;
+}
+
+.win.active, .loss.active {
+    animation-name: fade-in;
+    animation-duration: 2.0s;
+}
+
+.loss {
+	color: red;
+}
+
+.win {
+	color: green;
+}
+
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}

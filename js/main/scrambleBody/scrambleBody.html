@@ -1,0 +1,19 @@
+<div class="scramble-body">
+	<div class="game-zone">
+		<div class="title">The word has been scrambled! type in the letters in the right order</div>
+		<div class="letter-wrapper">
+			<div class="single-letter" ng-repeat="item in wordTypedTracker track by $index">
+				<span ng-class="{'typed': item.typed}">
+					{{item.letter}}
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="answer-label">Please start typing in your answer, press spacebar to get another word</div>
+	<div class="answer-body">
+		<div class="single-letter-answer" ng-repeat="letter in currentlyTyped track by $index">
+			{{letter}}
+		</div>
+	</div>
+</div>

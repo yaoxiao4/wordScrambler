@@ -1,0 +1,37 @@
+<html ng-app="scramble">
+	<head>
+		<title>Word Scramble</title>
+		<script src="js/angular.min.js"></script>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>		
+		<script src="js/bootstrap.js"></script>
+
+		<script src="js/main/app.js"></script>
+		<script src="js/main/main.js"></script>	
+
+		<script src="js/main/scrambleBody/scrambleBody.js"></script>	
+
+		<link rel="stylesheet" type="text/css" href="js/main/main.css">
+		<link rel="stylesheet" type="text/css" href="js/main/scrambleBody/scrambleBody.css">
+					
+	</head>
+
+	<body ng-controller="scrambleController">
+		<div class="main-body">
+			<scramble-body word-typed-tracker="wordTypedTracker" check-win-condition="checkWinCondition(currentlyTyped, callback)" get-new-word="getNewWord()" word-copy="wordCopy"></scramble-body>
+			<div class="indicator">
+				<div class="win">
+					Yes! it is correct!
+				</div>
+				<div class="loss">
+					Sorry, thats incorrect :(
+				</div>
+			</div>
+		</div>
+
+		<div class="main-score">
+			Your Score: <span class="score">{{score}}</span>
+			<div class="multiplier">{{wordsCompleted + 1}}x multiplier<div>
+		</div>
+	</body>
+</html>

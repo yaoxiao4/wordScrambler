@@ -1,0 +1,85 @@
+.scramble-body {
+	width: 550px;
+    margin: 0 auto;
+}
+
+.scramble-body .title {
+	font-size: 25px;
+	color: purple;
+	margin-left: 14px;
+	margin-bottom: 20px;
+}
+
+.scramble-body .single-letter {
+	font-weight: 900;
+	height: 100px;
+	width: 100px;
+	color: white;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: 5px solid red;
+	background-color: purple;
+	font-size: 70px;
+	text-align: center;
+	line-height: 100px;
+	text-transform: uppercase;
+
+    display: inline-block;
+}
+.scramble-body .game-zone {
+	height: 150px;
+}
+
+.scramble-body .letter-wrapper {
+	transition: height 0.5s linear;
+	height: 120px;
+	overflow: hidden;
+	width: 550px;
+}
+
+.scramble-body .letter-wrapper.hidden {
+	transition: height 0.5s linear;
+	height: 0px;
+	overflow: hidden;
+	width: 550px;
+}
+
+.scramble-body .single-letter .typed {
+	opacity: 0.3;
+    animation-name: fade-out;
+    animation-duration: 0.5s;
+}
+
+.scramble-body .single-letter-answer {
+	height: 100px;
+	width: 100px;
+
+	border-bottom: 5px solid blue;
+    display: inline-block;
+
+    color: black;
+	font-size: 70px;
+	text-align: center;
+	line-height: 100px;
+	text-transform: uppercase;
+
+	margin-left: 14px;
+	margin-right: 14px;
+}
+
+.scramble-body .answer-label {	
+	color: green;
+	font-size: 25px;
+	margin-top: 50px;
+	margin-left: 14px;
+	width: 100%;
+}
+
+.scramble-body .answer-body {
+	height: 100px;
+}
+
+@keyframes fade-out {
+    from {opacity: 1;}
+    to {opacity: 0.3;}
+}
