@@ -99,7 +99,7 @@ scrambleApp.controller('scrambleController', ['$scope', '$http', '$timeout', fun
 				document.querySelector('.loss').classList.remove('active');
 				// Create a new word copy
 				$scope.wordCopy = $scope.scrambledWord.slice();
-				$scope.gameClock = $scope.gameClock - 5;
+				$scope.gameClock = Math.max($scope.gameClock - 5, 0);
 				$scope.$digest();
 				callback(false);
 			}, 2000);
